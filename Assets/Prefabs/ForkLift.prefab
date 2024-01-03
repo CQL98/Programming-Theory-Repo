@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ea9b115998d39f4898af290a8b48212, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: ForkLift
   Capacity: 10
   idCollector: 1
   speed: 10

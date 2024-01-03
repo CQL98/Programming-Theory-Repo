@@ -5,7 +5,7 @@ using UnityEngine;
 public class Collector : MonoBehaviour
 {
     //ENCAPSULATION
-    public string Name { get ; private set ; }
+    public string Name;
     public int Capacity;
     public int idCollector;
 

@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int count = 0;
     [SerializeField] private int capacityCollector = 20;
+    [SerializeField] private int topScoreCollector = 0;
     [SerializeField] private TextMeshProUGUI textCollection;
 
     [SerializeField] private GameObject gameOverPanel;
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
         isWinGame = false;
         DataManager.Instance.LoadPlayerCollector();
         capacityCollector = DataManager.Instance.GetCapacityByCollector();
+        topScoreCollector = DataManager.Instance.GetTopScoreByCollector();
         spawnCollector();
         showCounter(count);
         gameOverPanel.gameObject.SetActive(false);
@@ -47,7 +49,7 @@ public class GameManager : MonoBehaviour
     }
     private void spawnCollector()
     {
-        Vector3 position = new Vector3(0,0.5f,0);
+        Vector3 position = new Vector3(0, 0.5f, 0);
         DataManager.Instance.SpawnCollector(position);
     }
     IEnumerator SpawnObject()
@@ -66,19 +68,21 @@ public class GameManager : MonoBehaviour
         isGameActive = false;
 
         if (capacityCollector <= count)
-        {
-            DataManager.Instance.SavePlayerCollector();
             isWinGame = true;
-        }
+
+
+        if (topScoreCollector < count)
+            DataManager.Instance.SavePlayerCollector(count, isWinGame);
+
+        else if (isWinGame)
+            DataManager.Instance.SavePlayerCollector();
+
 
         if (isWinGame)
-        {
             winLoseText.text = winText;
-        }
         else
-        {
             winLoseText.text = loseText;
-        }
+
         gameOverPanel.gameObject.SetActive(true);
     }
 
@@ -87,7 +91,7 @@ public class GameManager : MonoBehaviour
         if (isGameActive)
         {
             count++;
-            showCounter(count); 
+            showCounter(count);
         }
     }
 

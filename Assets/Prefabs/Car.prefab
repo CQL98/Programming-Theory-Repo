@@ -221,6 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b671dd48b4d8f34986b5b0a07ee39e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: Car
   Capacity: 20
   idCollector: 2
   speed: 10

@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14c9c5c825525854f83955daab4df962, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: Box
   Capacity: 15
   idCollector: 0
   speed: 10
