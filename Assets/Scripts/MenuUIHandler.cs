@@ -1,22 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuUIHandler : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private TMP_InputField nameText;
+    [SerializeField] private TMP_Dropdown collectorId;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
+    public void StartGame()
+    {
+        DataManager.Instance.StartValues(collectorId.value,nameText.text);
+        ChangeScene(1);
+    }
     public void ChangeScene(int idScene)
     {
         SceneManager.LoadScene(idScene);

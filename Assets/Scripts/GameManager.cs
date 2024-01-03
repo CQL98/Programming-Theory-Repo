@@ -29,6 +29,9 @@ public class GameManager : MonoBehaviour
         isGameActive = true;
         count = 0;
         isWinGame = false;
+        DataManager.Instance.LoadPlayerCollector();
+        capacityCollector = DataManager.Instance.GetCapacityByCollector();
+        spawnCollector();
         showCounter(count);
         gameOverPanel.gameObject.SetActive(false);
         StartCoroutine(SpawnObject());
@@ -42,7 +45,11 @@ public class GameManager : MonoBehaviour
             isGameActive = !isGameActive;
         }
     }
-
+    private void spawnCollector()
+    {
+        Vector3 position = new Vector3(0,0.5f,0);
+        DataManager.Instance.SpawnCollector(position);
+    }
     IEnumerator SpawnObject()
     {
         while (isGameActive)
@@ -60,6 +67,7 @@ public class GameManager : MonoBehaviour
 
         if (capacityCollector <= count)
         {
+            DataManager.Instance.SavePlayerCollector();
             isWinGame = true;
         }
 

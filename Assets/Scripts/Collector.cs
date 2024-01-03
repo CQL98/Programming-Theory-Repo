@@ -6,8 +6,8 @@ public class Collector : MonoBehaviour
 {
     //ENCAPSULATION
     public string Name { get ; private set ; }
-    public int Capacity { get ; private set ; }
-    [SerializeField] private int idCollector;
+    public int Capacity;
+    public int idCollector;
 
     [SerializeField] protected float speed = 10; 
     [SerializeField] protected float limitBoundX = 12; 
