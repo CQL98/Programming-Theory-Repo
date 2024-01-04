@@ -29,6 +29,10 @@ public class MenuUIHandler : MonoBehaviour
 
     public void StartGame()
     {
+        if (nameText.text == "")
+        {
+            nameText.text = "No name";
+        }
         DataManager.Instance.StartValues(collectorId.value,nameText.text);
         ChangeScene(1);
     }

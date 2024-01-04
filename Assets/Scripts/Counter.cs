@@ -19,9 +19,12 @@ public class Counter : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        gameManager.AddCounter();
-        //count++;
+        gameManager.AddCounter(); 
         other.gameObject.transform.parent = gameObject.transform;
     }
-
+    private void OnTriggerExit(Collider other)
+    {
+        gameManager.RemoveCounter(); 
+        other.gameObject.transform.parent = null;
+    }
 }

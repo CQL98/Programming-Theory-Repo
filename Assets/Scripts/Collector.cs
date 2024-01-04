@@ -19,7 +19,7 @@ public class Collector : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Move();
         LimitBound();
@@ -30,18 +30,13 @@ public class Collector : MonoBehaviour
         MoveHorizontal();
         MoveVertical();
     }
-    // ABSTRACTION
+
     protected virtual void MoveHorizontal()
-    {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        transform.Translate(Vector3.forward * speed * horizontalInput * Time.deltaTime);
+    { 
     }
 
-    // ABSTRACTION
     protected virtual void MoveVertical()
-    {
-        float verticalInput = Input.GetAxis("Vertical");
-        transform.Translate(Vector3.up * speed * verticalInput * Time.deltaTime);
+    { 
     }
 
     // ABSTRACTION
