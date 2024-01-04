@@ -33,8 +33,7 @@ public class CarCollector : Collector
 
     // POLYMORPHISM
     protected override void MoveVertical()
-    {
-        //base.MoveVertical(); 
+    { 
         float verticalInput = Input.GetAxis("Vertical");
         animator.SetFloat("yInput",verticalInput);
         transform.Translate(Vector3.right * speed * -verticalInput * Time.deltaTime);

@@ -57,7 +57,7 @@ public class DataManager : MonoBehaviour
         }
         else
         {
-          BaseSave();
+            BaseSave();
         }
     }
     public List<PlayerCollector> GetLoadPlayerCollector()
@@ -67,8 +67,8 @@ public class DataManager : MonoBehaviour
     }
     public string GetNameCollector(int index)
     {
-        return FormatString(collector[index].Name,10);
-    } 
+        return FormatString(collector[index].Name, 10);
+    }
 
     public void SavePlayerCollector()
     {
@@ -114,7 +114,7 @@ public class DataManager : MonoBehaviour
         File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
     }
 
-    public static string FormatString(string name,int lengthMax)
+    public static string FormatString(string name, int lengthMax)
     {
         string textNormalized = name.PadLeft((lengthMax - name.Length) / 2 + name.Length).PadRight(lengthMax);
         return textNormalized;

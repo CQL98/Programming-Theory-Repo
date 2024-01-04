@@ -31,7 +31,6 @@ public class ForkliftCollector : Collector
     protected override void MoveVertical()
     {
         float verticalInput = Input.GetAxis("Vertical");
-        // transform.Translate(Vector3.up * speed * verticalInput * Time.deltaTime);
         if (verticalInput > 0.5 || verticalInput < -0.5)
         {
             plataformFork.transform.localPosition = Vector3.MoveTowards(plataformFork.transform.localPosition, Vector3.up * limitBoundY * verticalInput, speed * Time.deltaTime);
@@ -41,11 +40,6 @@ public class ForkliftCollector : Collector
         {
             plataformFork.transform.localPosition = Vector3.MoveTowards(plataformFork.transform.localPosition, Vector3.up , speed * Time.deltaTime);
         }
-        //else
-        //{
-        //    plataformFork.transform.localPosition = Vector3.MoveTowards(plataformFork.transform.localPosition, Vector3.up * limitBoundY * verticalInput, speed * Time.deltaTime);
-
-        //}
     }
 
 

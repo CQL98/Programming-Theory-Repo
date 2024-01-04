@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject[] objects;
+    //ENCAPSULATION
     public bool isGameActive { get; private set; }
+    [SerializeField] private GameObject[] objects; 
     public bool isWinGame;
 
     public float startDelay = 1;
@@ -28,6 +29,15 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        SetBasicGameData(); 
+        spawnCollector();
+        showCounter(count);
+        gameOverPanel.gameObject.SetActive(false);
+        StartCoroutine(SpawnObject());
+    }
+
+    private void SetBasicGameData()
+    {
         isGameActive = true;
         count = 0;
         isWinGame = false;
@@ -35,19 +45,11 @@ public class GameManager : MonoBehaviour
         textName.text = DataManager.Instance.actualPlayerName;
         capacityCollector = DataManager.Instance.GetCapacityByCollector();
         topScoreCollector = DataManager.Instance.GetTopScoreByCollector();
-        spawnCollector();
-        showCounter(count);
-        gameOverPanel.gameObject.SetActive(false);
-        StartCoroutine(SpawnObject());
     }
 
     // Update is called once per frame
     void Update()
-    {
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    isGameActive = !isGameActive;
-        //}
+    { 
     }
     private void spawnCollector()
     {
@@ -98,9 +100,12 @@ public class GameManager : MonoBehaviour
         }
     }
     public void RemoveCounter()
-    { 
+    {
+        if (isGameActive)
+        {
             count--;
-            showCounter(count); 
+            showCounter(count);
+        }
     }
 
     private void showCounter(int value)

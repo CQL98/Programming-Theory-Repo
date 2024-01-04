@@ -4,13 +4,13 @@ using UnityEngine;
 //Inheritance parent class
 public class Collector : MonoBehaviour
 {
-    //ENCAPSULATION
-    public string Name;
+
+    public string Name; 
     public int Capacity;
     public int idCollector;
-
-    [SerializeField] protected float speed = 10; 
-    [SerializeField] protected float limitBoundX = 12; 
+    //ENCAPSULATION
+    [SerializeField] protected float speed = 10;
+    [SerializeField] protected float limitBoundX = 12;
     [SerializeField] protected float limitBoundY = 18; 
     public void SetCollector(int capacity, string name)
     {
@@ -32,11 +32,11 @@ public class Collector : MonoBehaviour
     }
 
     protected virtual void MoveHorizontal()
-    { 
+    {
     }
 
     protected virtual void MoveVertical()
-    { 
+    {
     }
 
     // ABSTRACTION
@@ -45,8 +45,7 @@ public class Collector : MonoBehaviour
         LimitBoundHorizontal();
         LimitBoundVertical();
     }
-
-    // ABSTRACTION
+     
     protected virtual void LimitBoundHorizontal()
     {
         if (transform.position.z < -limitBoundX)
@@ -58,8 +57,7 @@ public class Collector : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y, limitBoundX);
         }
     }
-
-    // ABSTRACTION
+     
     protected virtual void LimitBoundVertical()
     {
         if (transform.position.y < 0)
